@@ -5,7 +5,7 @@ const SortPopup = ({ items }) => {
   const [activePopup, setActivePopup] = React.useState(0);
   const sortRef = React.useRef();
 
-  const currentPopup = items[activePopup];
+  const currentPopup = items[activePopup].name;
 
   React.useEffect(() => {
     document.addEventListener('click', handleOutsideClick);
@@ -52,8 +52,8 @@ const SortPopup = ({ items }) => {
                 <li
                   className={activePopup === index ? 'active' : ''}
                   onClick={() => onSetActivePopup(index)}
-                  key={`${popup}_${index}`}>
-                  {popup}
+                  key={`${popup.type}_${index}`}>
+                  {popup.name}
                 </li>
               ))}
           </ul>
