@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const PizzaBlock = ({ imageUrl, name, types, sizes, price }) => {
+const Index = ({ imageUrl, name, types, sizes, price }) => {
   const availableTypes = ['тонкое', 'традиционное'];
   const availableSizes = [26, 30, 40];
   const [activeType, setActiveType] = React.useState(types[0]);
@@ -71,4 +71,4 @@ const PizzaBlock = ({ imageUrl, name, types, sizes, price }) => {
   );
 };
 
-export default PizzaBlock;
+export default Index;
