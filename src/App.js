@@ -1,6 +1,6 @@
 import { Header } from './components';
 import { Cart, Home } from './pages';
-import { Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import React from 'react';
 
 const App = () => {
@@ -8,8 +8,10 @@ const App = () => {
     <div className="wrapper">
       <Header />
       <div className="content">
-        <Route exact path="/" component={Home} />
-        <Route exact path="/cart" component={Cart} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
       </div>
     </div>
   );
