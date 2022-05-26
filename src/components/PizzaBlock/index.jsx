@@ -1,19 +1,30 @@
 import React from 'react';
 import classNames from 'classnames';
+import { Button } from '../index';
 
-const Index = ({ imageUrl, name, types, sizes, price }) => {
+const Index = ({ id, imageUrl, name, types, sizes, price, onClickAddPizza, addedCount }) => {
   const availableTypes = ['тонкое', 'традиционное'];
   const availableSizes = [26, 30, 40];
   const [activeType, setActiveType] = React.useState(types[0]);
-  const [activeSize, setActiveSize] = React.useState(sizes[0]);
+  const [activeSize, setActiveSize] = React.useState(0);
 
   const onSetActiveType = (index) => {
     setActiveType(index);
   };
 
   const onSetActiveSize = (index) => {
-    setActiveSize(index)
-  }
+    setActiveSize(index);
+  };
+
+  const onAddPizza = () =>
+    onClickAddPizza({
+      id,
+      name,
+      imageUrl,
+      price,
+      size: availableSizes[activeSize],
+      type: availableTypes[activeType],
+    });
 
   return (
     <div className="pizza-block">
@@ -51,7 +62,7 @@ const Index = ({ imageUrl, name, types, sizes, price }) => {
       </div>
       <div className="pizza-block__bottom">
         <div className="pizza-block__price">от {price} ₽</div>
-        <div className="button button--outline button--add">
+        <Button onClick={onAddPizza} className="button--add" outline>
           <svg
             width="12"
             height="12"
@@ -64,8 +75,8 @@ const Index = ({ imageUrl, name, types, sizes, price }) => {
             />
           </svg>
           <span>Добавить</span>
-          <i>2</i>
-        </div>
+          {addedCount && <i>{addedCount}</i>}
+        </Button>
       </div>
     </div>
   );
